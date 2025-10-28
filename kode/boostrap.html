@@ -9,80 +9,110 @@
     <!-- Bootstrap 2.0.2 -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <style>
+        :root {
+            --shiroko-blue: #4FC3F7;
+            --shiroko-dark-blue: #0288D1;
+            --shiroko-light-blue: #B3E5FC;
+            --shiroko-cyan: #00BCD4;
+            --shiroko-white: #E3F2FD;
+            --shiroko-gray: #37474F;
+        }
+
         body {
-            background-color: #f8f9fa;
+            background-color: var(--shiroko-white);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .navbar {
             margin-bottom: 0;
+            border: none;
         }
 
         .navbar-inner {
-            background: #2c3e50;
-            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            background: linear-gradient(135deg, var(--shiroko-dark-blue) 0%, var(--shiroko-cyan) 100%);
             border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 15px rgba(2, 136, 209, 0.3);
         }
 
         .navbar .brand,
         .navbar .nav>li>a {
-            color: #ecf0f1;
-            text-shadow: none;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
         }
 
         .navbar .nav>li>a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #3498db;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--shiroko-light-blue);
+            transform: translateY(-1px);
         }
 
         .navbar .nav>.active>a {
-            background-color: #3498db;
+            background-color: rgba(255, 255, 255, 0.3);
             color: white;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero-unit {
             margin-top: 0;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            padding: 80px 40px;
+            background: linear-gradient(135deg, var(--shiroko-blue) 0%, var(--shiroko-cyan) 100%);
             color: white;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             border-radius: 0;
-            border-bottom: 4px solid #2980b9;
+            border-bottom: 5px solid var(--shiroko-dark-blue);
             position: relative;
             overflow: hidden;
         }
 
+        .hero-unit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
         .hero-unit h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
         }
 
         .hero-unit p {
-            font-size: 18px;
-            line-height: 1.6;
+            font-size: 20px;
+            line-height: 1.7;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 30px;
         }
 
-        /* UPDATED LEARN MORE BUTTON STYLES */
+        /* LEARN MORE BUTTON - Shiroko Theme */
         .hero-unit .btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            background: linear-gradient(135deg, var(--shiroko-dark-blue), #01579B);
             border: none;
             color: white;
             text-shadow: none;
             font-weight: bold;
-            padding: 14px 35px;
+            padding: 16px 40px;
             font-size: 18px;
             border-radius: 30px;
             transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 6px 20px rgba(2, 136, 209, 0.4);
             position: relative;
             overflow: hidden;
             z-index: 1;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .hero-unit .btn:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
-            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            box-shadow: 0 10px 30px rgba(2, 136, 209, 0.6);
+            background: linear-gradient(135deg, #01579B, var(--shiroko-dark-blue));
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .hero-unit .btn::before {
@@ -93,7 +123,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.6s ease;
+            transition: left 0.7s ease;
             z-index: -1;
         }
 
@@ -102,60 +132,69 @@
         }
 
         .hero-unit .btn::after {
-            content: '»';
-            margin-left: 10px;
+            content: '››';
+            margin-left: 12px;
             font-weight: bold;
-            font-size: 20px;
-            transition: all 0.3s ease;
+            font-size: 22px;
+            transition: all 0.4s ease;
         }
 
         .hero-unit .btn:hover::after {
-            transform: translateX(5px) rotate(90deg);
-            margin-left: 15px;
+            transform: translateX(8px);
+            margin-left: 18px;
         }
 
         .feature-box {
             background: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border-left: 5px solid #3498db;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--shiroko-blue);
+            box-shadow: 0 5px 20px rgba(79, 195, 247, 0.1);
+            transition: all 0.4s ease;
+            border-top: 1px solid var(--shiroko-light-blue);
         }
 
         .feature-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(79, 195, 247, 0.2);
+            border-left-color: var(--shiroko-cyan);
         }
 
         .feature-box h4 {
-            color: #2c3e50;
+            color: var(--shiroko-dark-blue);
             margin-bottom: 15px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 20px;
         }
 
-        /* UPDATED VIEW DETAIL BUTTON STYLES */
+        .feature-box p {
+            color: var(--shiroko-gray);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* VIEW DETAIL BUTTON - Shiroko Theme */
         .feature-box .btn {
-            background: linear-gradient(135deg, #3498db, #2980b9);
+            background: linear-gradient(135deg, var(--shiroko-blue), var(--shiroko-cyan));
             color: white;
             border: none;
             border-radius: 25px;
-            padding: 10px 24px;
+            padding: 12px 28px;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
             transition: all 0.4s ease;
-            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
         }
 
         .feature-box .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-            background: linear-gradient(135deg, #2980b9, #3498db);
+            box-shadow: 0 8px 25px rgba(79, 195, 247, 0.5);
+            background: linear-gradient(135deg, var(--shiroko-cyan), var(--shiroko-blue));
         }
 
         .feature-box .btn::before {
@@ -165,8 +204,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
         }
 
         .feature-box .btn:hover::before {
@@ -181,57 +220,63 @@
         }
 
         .feature-box .btn:hover::after {
-            transform: translateX(3px);
+            transform: translateX(4px);
         }
 
         .sidebar-widget {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(79, 195, 247, 0.1);
+            border: 1px solid var(--shiroko-light-blue);
         }
 
         .widget-header {
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: #2c3e50;
+            border-bottom: 3px solid var(--shiroko-blue);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            font-weight: 600;
+            color: var(--shiroko-dark-blue);
             font-size: 18px;
         }
 
         .nav-list li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .nav-list li a {
-            color: #555;
-            padding: 8px 12px;
-            border-radius: 4px;
+            color: var(--shiroko-gray);
+            padding: 10px 15px;
+            border-radius: 8px;
             transition: all 0.3s ease;
+            border-left: 3px solid transparent;
         }
 
         .nav-list li a:hover {
-            background-color: #3498db;
-            color: white;
+            background: linear-gradient(135deg, var(--shiroko-light-blue), white);
+            color: var(--shiroko-dark-blue);
             text-decoration: none;
+            border-left-color: var(--shiroko-blue);
+            transform: translateX(5px);
         }
 
         .featurette {
-            margin: 50px 0;
-            padding: 40px 0;
-            border-top: 2px solid #ecf0f1;
+            margin: 60px 0;
+            padding: 50px 0;
+            border-top: 3px solid var(--shiroko-light-blue);
+            background: linear-gradient(135deg, rgba(179, 229, 252, 0.1), rgba(227, 242, 253, 0.3));
+            border-radius: 15px;
         }
 
         .featurette:nth-child(even) {
-            background: linear-gradient(to right, #f8f9fa, white);
+            background: linear-gradient(135deg, rgba(227, 242, 253, 0.3), rgba(179, 229, 252, 0.1));
         }
 
         .featurette-image {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, var(--shiroko-blue), var(--shiroko-cyan));
             border: none;
             display: flex;
             align-items: center;
@@ -239,41 +284,49 @@
             font-weight: bold;
             color: white;
             border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(79, 195, 247, 0.3);
             margin: 0 auto;
+            font-size: 14px;
+            transition: all 0.4s ease;
+        }
+
+        .featurette:hover .featurette-image {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(79, 195, 247, 0.5);
         }
 
         .featurette h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
+            color: var(--shiroko-dark-blue);
+            margin-bottom: 25px;
             font-weight: 300;
+            font-size: 32px;
         }
 
         .featurette p {
-            color: #7f8c8d;
+            color: var(--shiroko-gray);
             line-height: 1.7;
-            font-size: 16px;
+            font-size: 17px;
         }
 
         footer {
-            margin-top: 60px;
-            padding: 30px 0;
-            border-top: 2px solid #3498db;
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 5px solid var(--shiroko-blue);
             text-align: center;
-            color: #7f8c8d;
-            background: #2c3e50;
-            color: #ecf0f1;
+            background: linear-gradient(135deg, var(--shiroko-dark-blue), var(--shiroko-gray));
+            color: white;
         }
 
         footer p {
             margin: 0;
-            font-size: 14px;
+            font-size: 16px;
+            opacity: 0.9;
         }
 
         /* Responsive improvements */
         @media (max-width: 767px) {
             .hero-unit {
-                padding: 40px 20px;
+                padding: 50px 20px;
                 text-align: center;
             }
 
@@ -282,17 +335,43 @@
             }
 
             .hero-unit .btn {
-                padding: 12px 25px;
+                padding: 14px 30px;
                 font-size: 16px;
             }
 
             .feature-box {
-                margin-bottom: 15px;
+                margin-bottom: 20px;
+                padding: 20px;
             }
 
             .featurette-image {
-                margin-bottom: 20px;
+                margin-bottom: 25px;
+                width: 120px;
+                height: 120px;
             }
+        }
+
+        /* Additional Shiroko theme elements */
+        .container {
+            position: relative;
+        }
+
+        .feature-box::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: rgba(79, 195, 247, 0.1);
+            border-radius: 0 0 10px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover::after {
+            background: rgba(79, 195, 247, 0.3);
+            bottom: -15px;
         }
     </style>
 </head>
@@ -303,7 +382,7 @@
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="#" style="color: white; font-weight: bold; font-size: 24px;">Layout
+                    <a class="brand" href="#" style="color: white; font-weight: bold; font-size: 26px;">🌊 Layout
                         Sederhana</a>
                     <ul class="nav">
                         <li class="active"><a href="#">Home</a></li>
@@ -378,7 +457,7 @@
                                 that deliver exceptional user experiences.</p>
                         </div>
                         <div class="span2">
-                            <div class="featurette-image">Tech</div>
+                            <div class="featurette-image">✨ Tech</div>
                         </div>
                     </div>
                 </div>
@@ -386,7 +465,7 @@
                 <div class="featurette">
                     <div class="row">
                         <div class="span2">
-                            <div class="featurette-image">Design</div>
+                            <div class="featurette-image">🎨 Design</div>
                         </div>
                         <div class="span6">
                             <h2>Creative Design Solutions</h2>
@@ -403,19 +482,19 @@
             <!-- Sidebar -->
             <div class="span4">
                 <div class="sidebar-widget">
-                    <div class="widget-header">Quick Links</div>
+                    <div class="widget-header">🔗 Quick Links</div>
                     <ul class="nav nav-list">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Graphic Design</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">SEO Services</a></li>
-                        <li><a href="#">Content Writing</a></li>
-                        <li><a href="#">Social Media</a></li>
+                        <li><a href="#">🌐 Web Development</a></li>
+                        <li><a href="#">🎨 Graphic Design</a></li>
+                        <li><a href="#">📱 Digital Marketing</a></li>
+                        <li><a href="#">🔍 SEO Services</a></li>
+                        <li><a href="#">✏️ Content Writing</a></li>
+                        <li><a href="#">💬 Social Media</a></li>
                     </ul>
                 </div>
 
                 <div class="sidebar-widget">
-                    <div class="widget-header">About Us</div>
+                    <div class="widget-header">👥 About Us</div>
                     <p>Vestibulum lorem elit, iaculis in nisi volutpat, malesuada tincidunt arcu. Proin in leo
                         fringilla, vestibulum mi porta, faucibus felis. Integer pharetra est nunc, nec pretium nunc
                         pretium ac.</p>
@@ -427,7 +506,7 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2024 - Universitas Pelita Bangsa. All rights reserved.</p>
+            <p>&copy; 2024 - Universitas Pelita Bangsa. All rights reserved. | 🌊 Shiroko Theme</p>
         </footer>
     </div>
 
