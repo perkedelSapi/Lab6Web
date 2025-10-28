@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <title>Layout Sederhana</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 2.0.2 -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+        }
+
+        .navbar-inner {
+            background: #2c3e50;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .brand,
+        .navbar .nav>li>a {
+            color: #ecf0f1;
+            text-shadow: none;
+        }
+
+        .navbar .nav>li>a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #3498db;
+        }
+
+        .navbar .nav>.active>a {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .hero-unit {
+            margin-top: 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 0;
+            border-bottom: 4px solid #2980b9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-unit h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero-unit p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* UPDATED LEARN MORE BUTTON STYLES */
+        .hero-unit .btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border: none;
+            color: white;
+            text-shadow: none;
+            font-weight: bold;
+            padding: 14px 35px;
+            font-size: 18px;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-unit .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+        }
+
+        .hero-unit .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .hero-unit .btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-unit .btn::after {
+            content: '»';
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-unit .btn:hover::after {
+            transform: translateX(5px) rotate(90deg);
+            margin-left: 15px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* UPDATED VIEW DETAIL BUTTON STYLES */
+        .feature-box .btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .feature-box .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, #3498db);
+        }
+
+        .feature-box .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-box .btn:hover::before {
+            left: 100%;
+        }
+
+        .feature-box .btn::after {
+            content: '→';
+            margin-left: 8px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box .btn:hover::after {
+            transform: translateX(3px);
+        }
+
+        .sidebar-widget {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .widget-header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+
+        .nav-list li {
+            margin-bottom: 8px;
+        }
+
+        .nav-list li a {
+            color: #555;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+        }
+
+        .featurette {
+            margin: 50px 0;
+            padding: 40px 0;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .featurette:nth-child(even) {
+            background: linear-gradient(to right, #f8f9fa, white);
+        }
+
+        .featurette-image {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+
+        .featurette h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .featurette p {
+            color: #7f8c8d;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 2px solid #3498db;
+            text-align: center;
+            color: #7f8c8d;
+            background: #2c3e50;
+            color: #ecf0f1;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 767px) {
+            .hero-unit {
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .hero-unit h1 {
+                font-size: 36px;
+            }
+
+            .hero-unit .btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            .feature-box {
+                margin-bottom: 15px;
+            }
+
+            .featurette-image {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#" style="color: white; font-weight: bold; font-size: 24px;">Layout
+                        Sederhana</a>
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Artikel</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Unit -->
+        <div class="hero-unit">
+            <h1>Hello World!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem elit, iaculis innisi volutpat,
+                malesuada tincidunt arcu. Proin in leo fringilla, vestibulum mi porta, faucibus felis. Integer pharetra
+                est nunc, nec pretium nunc pretium ac.</p>
+            <p><a class="btn btn-primary btn-large">Learn more</a></p>
+        </div>
+
+        <div class="row">
+            <!-- Main Content -->
+            <div class="span8">
+                <!-- 4 Feature Boxes -->
+                <div class="row">
+                    <div class="span6">
+                        <div class="feature-box">
+                            <h4>Web Development</h4>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Build modern web
+                                applications with latest technologies.</p>
+                            <a class="btn" href="#">View detail</a>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="feature-box">
+                            <h4>Mobile Design</h4>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Create responsive
+                                mobile-first designs.</p>
+                            <a class="btn" href="#">View detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span6">
+                        <div class="feature-box">
+                            <h4>UI/UX Design</h4>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Design beautiful user
+                                interfaces and experiences.</p>
+                            <a class="btn" href="#">View detail</a>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div class="feature-box">
+                            <h4>Digital Marketing</h4>
+                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Grow your business
+                                with effective digital strategies.</p>
+                            <a class="btn" href="#">View detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 Featurettes -->
+                <div class="featurette">
+                    <div class="row">
+                        <div class="span6">
+                            <h2>Modern Web Technologies</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem elit, iaculis
+                                in nisi volutpat, malesuada tincidunt arcu. Proin in leo fringilla, vestibulum mi porta,
+                                faucibus felis. Integer pharetra est nunc, nec pretium nunc pretium ac.</p>
+                            <p>We use the latest technologies to build fast, scalable, and maintainable web applications
+                                that deliver exceptional user experiences.</p>
+                        </div>
+                        <div class="span2">
+                            <div class="featurette-image">Tech</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featurette">
+                    <div class="row">
+                        <div class="span2">
+                            <div class="featurette-image">Design</div>
+                        </div>
+                        <div class="span6">
+                            <h2>Creative Design Solutions</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lorem elit, iaculis
+                                in nisi volutpat, malesuada tincidunt arcu. Proin in leo fringilla, vestibulum mi porta,
+                                faucibus felis. Integer pharetra est nunc, nec pretium nunc pretium ac.</p>
+                            <p>Our design team creates visually stunning interfaces that are both beautiful and
+                                functional, ensuring the best user experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="span4">
+                <div class="sidebar-widget">
+                    <div class="widget-header">Quick Links</div>
+                    <ul class="nav nav-list">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">SEO Services</a></li>
+                        <li><a href="#">Content Writing</a></li>
+                        <li><a href="#">Social Media</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <div class="widget-header">About Us</div>
+                    <p>Vestibulum lorem elit, iaculis in nisi volutpat, malesuada tincidunt arcu. Proin in leo
+                        fringilla, vestibulum mi porta, faucibus felis. Integer pharetra est nunc, nec pretium nunc
+                        pretium ac.</p>
+                    <p>We are a team of passionate developers and designers creating amazing digital experiences for our
+                        clients worldwide.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 - Universitas Pelita Bangsa. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- jQuery dan Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
